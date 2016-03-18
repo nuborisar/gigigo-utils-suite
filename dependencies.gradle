@@ -18,9 +18,9 @@
 
 allprojects {
   ext {
-    dependencies = [androidSupportV7           : 'com.android.support:appcompat-v7:23.1.1',
-                    retrofit                   : 'com.squareup.retrofit:retrofit:2.0.0-beta2',
-                    gsonConverter              : 'com.squareup.retrofit:converter-gson:2.0.0-beta2',
+    dependencies = [androidSupportv7           : 'com.android.support:appcompat-v7:23.1.1',
+                    retrofit                   : 'com.squareup.retrofit2:retrofit:2.0.0',
+                    gsonConverter              : 'com.squareup.retrofit2:converter-gson:2.0.0',
                     supportAnnotations         : 'com.android.support:support-annotations:23.1.1',
                     dexter                     : 'com.karumi:dexter:2.1.2',
                     playServicesGcm            : 'com.google.android.gms:play-services-gcm:8.4.0',]

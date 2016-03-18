@@ -29,11 +29,8 @@ import com.gigigo.ggglogger.GGGLogImpl;
 import com.gigigo.ggglogger.LogLevel;
 
 import java.io.IOException;
-
-import retrofit.Call;
-import retrofit.Response;
-
-
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class RetrofitApiServiceExcecutor implements ApiServiceExecutor<Call<?>> {
 
@@ -61,7 +58,7 @@ public class RetrofitApiServiceExcecutor implements ApiServiceExecutor<Call<?>> 
         tries++;
         clonedCall = (Call<ApiResponse>) requestType.clone();
         retrofitResponse = clonedCall.execute();
-        success = retrofitResponse.isSuccess();
+        success = retrofitResponse.isSuccessful();
         apiResponse = parseRetrofitResponseToApi(retrofitResponse);
       } catch (Exception e) {
         exception = e;
@@ -79,7 +76,7 @@ public class RetrofitApiServiceExcecutor implements ApiServiceExecutor<Call<?>> 
 
     ApiResponse apiResponse;
 
-    if (retrofitResponse.isSuccess()){
+    if (retrofitResponse.isSuccessful()){
       apiResponse = retrofitResponse.body();
     }else{
       apiResponse = buildApiErrorResponse(retrofitResponse);

@@ -22,8 +22,8 @@ import com.squareup.okhttp.mockwebserver.RecordedRequest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static junit.framework.Assert.*;
 

@@ -17,24 +17,18 @@
  */
 
 package com.gigigo.ggglib.network.converters;
-
-
-import com.squareup.okhttp.ResponseBody;
-
 import java.io.IOException;
 import java.lang.annotation.Annotation;
-
-import retrofit.Converter;
-import retrofit.Retrofit;
-
-
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
+import retrofit2.Retrofit;
 
 public class RetrofitErrorConverter<ErrResponse> implements Converter<ResponseBody, ErrResponse> {
 
   private Converter<ResponseBody, ErrResponse> converter;
 
   public RetrofitErrorConverter(Retrofit retrofit, Class<ErrResponse> errorResponse) {
-    converter = retrofit.responseConverter(errorResponse, new Annotation[0]);
+    converter = retrofit.responseBodyConverter(errorResponse, new Annotation[0]);
   }
 
   @Override public ErrResponse convert(ResponseBody value) throws IOException {

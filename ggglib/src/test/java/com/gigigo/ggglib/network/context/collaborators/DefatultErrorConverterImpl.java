@@ -3,10 +3,10 @@ package com.gigigo.ggglib.network.context.collaborators;
 
 import com.gigigo.ggglib.network.converters.ErrorConverter;
 import com.gigigo.ggglib.network.converters.RetrofitErrorConverter;
-import com.squareup.okhttp.ResponseBody;
-import java.io.IOException;
-import retrofit.Retrofit;
 
+import java.io.IOException;
+import okhttp3.ResponseBody;
+import retrofit2.Retrofit;
 
 public class DefatultErrorConverterImpl<ErrorResponse> implements ErrorConverter<ErrorResponse, ResponseBody> {
 
