@@ -1,5 +1,5 @@
 /*
- * Created by Orchextra
+ * Created by Gigigo Android Team
  *
  * Copyright (C) 2016 Gigigo Mobile Services SL
  *
