@@ -1,7 +1,7 @@
 # gigigo-utils-suite
 
 [![Build Status](https://travis-ci.org/Gigigo-Android-Devs/gigigo-utils-suite.svg?branch=master)](https://travis-ci.org/Gigigo-Android-Devs/gigigo-utils-suite) 
-[![codecov.io](https://codecov.io/github/Gigigo-Android-Devs/gigigo-utils-suite/coverage.svg?branch=master)](https://codecov.io/github/Gigigo-Android-Devs/gigigo-utils-suite)
+[![codecov.io](https://codecov.io/github/Gigigo-Android-Devs/gigigo-utils-suite/coverage.svg?branch=develop)](https://codecov.io/github/Gigigo-Android-Devs/gigigo-utils-suite)
 ![Language](https://img.shields.io/badge/Language-Android-brightgreen.svg)
 [![](https://jitpack.io/v/Gigigo-Android-Devs/gigigo-utils-suite.svg)](https://jitpack.io/#Gigigo-Android-Devs/gigigo-utils-suite)
 
