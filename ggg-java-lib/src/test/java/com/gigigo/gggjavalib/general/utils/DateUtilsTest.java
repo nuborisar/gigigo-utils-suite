@@ -65,8 +65,10 @@ public class DateUtilsTest {
         String stringDate = "Valor Fake";
 
         Date date = DateUtils.stringToDateWithFormat(stringDate, DATE_FORMAT);
+        
+        Date expectedDate = new Date(0);
 
-        assertThat(expectedDate, isDateEqualTo(new Date(0)));
+        assertThat(expectedDate, isDateEqualTo(date));
     }
 
     @Test
