@@ -66,9 +66,7 @@ public class DateUtilsTest {
 
         Date date = DateUtils.stringToDateWithFormat(stringDate, DATE_FORMAT);
 
-        Date expectedDate = getCalendar(1970, Calendar.JANUARY, 01, 01, 00, 00);
-
-        assertThat(expectedDate, isDateEqualTo(date));
+        assertThat(expectedDate, isDateEqualTo(new Date(0)));
     }
 
     @Test
