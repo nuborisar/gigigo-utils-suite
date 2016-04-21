@@ -21,7 +21,6 @@ package com.gigigo.ggglib.permissions;
 import com.gigigo.ggglib.ContextProvider;
 import com.gigigo.ggglib.R;
 
-
 public class ContinueRequestPermissionListenerImpl extends AbstractPermissionListener{
 
   public ContinueRequestPermissionListenerImpl(ContextProvider contextProvider) {

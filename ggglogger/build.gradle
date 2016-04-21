@@ -27,9 +27,8 @@ android {
   defaultConfig {
     minSdkVersion parent.ext.androidMinSdkVersion
     targetSdkVersion parent.ext.androidTargetSdkVersion
-//    versionCode parent.ext.androidVersionCode
-//    versionName parent.ext.androidVersionName
   }
+
   buildTypes {
     release {
       minifyEnabled false
