@@ -37,7 +37,7 @@ public abstract class ApiGenericResponseMapper<ModelData, ApiResponseData, ApiBu
   public <ApiResponse extends ApiGenericResponse> BusinessObject mapApiGenericResponseToBusiness
       (ApiResponse apiResponse){
 
-    if (apiResponse.getResult()!=null){
+    if (apiResponse.getResult()!=null && apiResponse.getBusinessError()==null){
       return createSuccessfulResponseBusinessObject(apiResponse);
     }else if(apiResponse.getBusinessError()!=null){
       return createErrorResponseBusinessObject(apiResponse);
