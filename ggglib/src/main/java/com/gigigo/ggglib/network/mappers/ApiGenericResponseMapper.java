@@ -72,7 +72,7 @@ public abstract class ApiGenericResponseMapper<ModelData, ApiResponseData, ApiBu
   private <ApiResponse extends ApiGenericResponse> BusinessObject
   createBusinessErrorResponseBusinessResponse(ApiResponse apiResponse) {
     BusinessError businessError = createBusinessError(
-        (ApiBusinessError) apiResponse.getBusinessError());
+        (ApiBusinessError) apiResponse.getBusinessError(), (ApiResponseData) apiResponse.getResult());
     businessError.setBusinessContentType(BusinessContentType.BUSINESS_ERROR_CONTENT);
     return new BusinessObject<>(null, businessError);
   }
@@ -100,6 +100,6 @@ public abstract class ApiGenericResponseMapper<ModelData, ApiResponseData, ApiBu
 
   protected abstract BusinessError onException(ApiGenericExceptionResponse exceptionResponse);
 
-  protected abstract BusinessError createBusinessError(ApiBusinessError businessError);
+  protected abstract BusinessError createBusinessError(ApiBusinessError businessError, ApiResponseData result);
 
 }

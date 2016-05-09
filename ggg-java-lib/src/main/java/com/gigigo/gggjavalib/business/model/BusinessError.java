@@ -19,7 +19,7 @@
 package com.gigigo.gggjavalib.business.model;
 
 
-public class BusinessError {
+public class BusinessError<ExtraErrorInfo> {
 
   public static final int EXCEPTION_BUSINESS_ERROR_CODE = -222;
   public static final int NO_ERROR_BUSINESS_ERROR_CODE = 0;
@@ -28,6 +28,7 @@ public class BusinessError {
   private BusinessContentType businessContentType;
   private int code;
   private String message;
+  private ExtraErrorInfo extraErrorInfo;
 
   public BusinessError(int code, String message, BusinessContentType businessContentType) {
     this.code = code;
@@ -67,5 +68,13 @@ public class BusinessError {
 
   public void setMessage(String message) {
     this.message = message;
+  }
+
+  public ExtraErrorInfo getExtraErrorInfo() {
+    return extraErrorInfo;
+  }
+
+  public void setExtraErrorInfo(ExtraErrorInfo extraErrorInfo) {
+    this.extraErrorInfo = extraErrorInfo;
   }
 }
