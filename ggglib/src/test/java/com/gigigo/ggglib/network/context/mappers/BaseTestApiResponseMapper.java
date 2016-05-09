@@ -16,7 +16,7 @@ public class BaseTestApiResponseMapper<Model,Data> extends
   }
 
   @Override
-  protected BusinessError createBusinessError(MockApiErrorResponse mockApiErrorResponse) {
+  protected BusinessError createBusinessError(MockApiErrorResponse mockApiErrorResponse, Data result) {
     int code = mockApiErrorResponse.getCode();
     String message = mockApiErrorResponse.getMessage();
     BusinessError businessError = new BusinessError(code, message, BusinessContentType.BUSINESS_ERROR_CONTENT);
