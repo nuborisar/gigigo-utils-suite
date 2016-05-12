@@ -25,7 +25,6 @@ allprojects {
                     dexter                     : 'com.karumi:dexter:2.2.2',
 
                     supportAnnotations         : 'com.android.support:support-annotations:23.1.1',
-
                     playServicesGcm            : 'com.google.android.gms:play-services-gcm:8.4.0'
     ]
 
