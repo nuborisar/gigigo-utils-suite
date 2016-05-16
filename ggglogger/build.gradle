@@ -19,6 +19,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
+def getWorkingBranch() {
+  // Triple double-quotes for the breaklines
+  def workingBranch = """git --git-dir=${rootDir}/.git
+                               --work-tree=${rootDir}
+                               rev-parse --abbrev-ref HEAD""".execute().text.trim()
+  print "Working branch: " + workingBranch
+  return workingBranch
+}
 
 android {
   compileSdkVersion parent.ext.androidCompileSdkVersion
@@ -46,9 +54,14 @@ android {
   }
 }
 
-
 dependencies{
-  compile parent.ext.dependencies.supportAnnotations
+
+  if (getWorkingBranch().contains('modular')) {
+    compile 'com.android.support:support-annotations:23.1.1'
+  }else{
+    compile parent.ext.dependencies.supportAnnotations
+  }
+
   testCompile parent.ext.testDependencies.junit
 }
 

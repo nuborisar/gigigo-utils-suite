@@ -19,6 +19,15 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
+def getWorkingBranch() {
+  // Triple double-quotes for the breaklines
+  def workingBranch = """git --git-dir=${rootDir}/.git
+                               --work-tree=${rootDir}
+                               rev-parse --abbrev-ref HEAD""".execute().text.trim()
+  print "Working branch: " + workingBranch
+  return workingBranch
+}
+
 android {
 
   compileSdkVersion parent.ext.androidCompileSdkVersion
@@ -57,24 +66,40 @@ android {
 
 dependencies {
 
-  compile (parent.ext.dependencies.dexter){
-      exclude group:'com.android.support', module:'recyclerview-v7'
-      exclude group:'com.android.support', module:'support-annotations'
-  }
-
-  compile parent.ext.dependencies.retrofit
-  compile parent.ext.dependencies.gsonConverter
-
-  compile parent.ext.dependencies.playServicesGcm
-
   compile project (':ggg-java-lib')
   compile project (':ggglogger')
 
   testCompile parent.ext.testDependencies.junit
   testCompile parent.ext.testDependencies.mockito
-  testCompile parent.ext.dependencies.gsonConverter
   testCompile parent.ext.testDependencies.mockWebServer
+
+  if (getWorkingBranch().contains('modular')) {
+
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.google.android.gms:play-services-gcm:8.4.0'
+
+    compile ('com.karumi:dexter:2.2.2'){
+      exclude group:'com.android.support', module:'recyclerview-v7'
+      exclude group:'com.android.support', module:'support-annotations'
+    }
+
+    testCompile 'com.squareup.retrofit2:converter-gson:2.0.2'
+
+  }else{
+    compile parent.ext.dependencies.retrofit
+    compile parent.ext.dependencies.gsonConverter
+    compile parent.ext.dependencies.playServicesGcm
+
+    compile (parent.ext.dependencies.dexter){
+      exclude group:'com.android.support', module:'recyclerview-v7'
+      exclude group:'com.android.support', module:'support-annotations'
+    }
+
+    testCompile parent.ext.dependencies.gsonConverter
+  }
 }
+
 
 //apply plugin: 'com.google.gms.google-services'
 
