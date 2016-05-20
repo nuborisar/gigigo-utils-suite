@@ -47,3 +47,7 @@ artifacts {
   archives sourcesJar
   archives javadocJar
 }
+
+checkstyle {
+    configFile = rootProject.file('checkstyle.xml')
+    }
