@@ -18,7 +18,6 @@
 
 package com.gigigo.gggjavalib.business.model;
 
-
 public class BusinessObject<ModelObject> {
 
   private ModelObject data;
@@ -45,11 +44,7 @@ public class BusinessObject<ModelObject> {
     this.businessError = businessError;
   }
 
-  public boolean isSuccess(){
-    if (businessError.getBusinessContentType().equals(BusinessContentType.NO_ERROR_CONTENT)){
-      return true;
-    }else{
-      return false;
-    }
+  public boolean isSuccess() {
+    return businessError.getBusinessContentType().equals(BusinessContentType.NO_ERROR_CONTENT);
   }
 }

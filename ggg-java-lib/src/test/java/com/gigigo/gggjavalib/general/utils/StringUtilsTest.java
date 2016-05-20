@@ -20,18 +20,17 @@ package com.gigigo.gggjavalib.general.utils;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
 
 public class StringUtilsTest {
 
-  @Test public void shouldCapitalizeGivenText(){
+  @Test public void shouldCapitalizeGivenText() {
     String actual = StringUtils.capitalize("hello world");
     String expected = "Hello world";
     assertEquals(expected, actual);
   }
 
-  @Test public void shouldReturnEmptyStringWithNullString(){
+  @Test public void shouldReturnEmptyStringWithNullString() {
     String actual = StringUtils.capitalize(null);
     String expected = "";
     assertEquals(expected, actual);

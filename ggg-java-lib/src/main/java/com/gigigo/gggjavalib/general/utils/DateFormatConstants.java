@@ -18,9 +18,10 @@
 
 package com.gigigo.gggjavalib.general.utils;
 
-public class DateFormatConstants {
+final public class DateFormatConstants {
 
-    public static final String DATE_FORMAT_TIME = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-    public static final String DATE_FORMAT_NO_TIME = "yyyy-MM-dd";
+  private DateFormatConstants() { }
 
+  public static final String DATE_FORMAT_TIME = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+  public static final String DATE_FORMAT_NO_TIME = "yyyy-MM-dd";
 }

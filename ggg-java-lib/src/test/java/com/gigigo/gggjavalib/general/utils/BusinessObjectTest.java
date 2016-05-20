@@ -21,8 +21,8 @@ package com.gigigo.gggjavalib.general.utils;
 import com.gigigo.gggjavalib.business.model.BusinessError;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 public class BusinessObjectTest {
 

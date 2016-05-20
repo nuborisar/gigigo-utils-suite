@@ -18,86 +18,77 @@
 
 package com.gigigo.gggjavalib.general.utils;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
-
 public class ConsistencyUtilsTest {
 
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
+  @Rule public ExpectedException thrown = ExpectedException.none();
 
-  @Test
-  public void utilsNotNullTestNull(){
+  @Test public void utilsNotNullTestNull() {
     thrown.expect(Exception.class);
     thrown.expectMessage("This instance cannot be null");
 
     ConsistencyUtils.checkNotNull(null, "This instance cannot be null");
   }
 
-  @Test public void utilsNotNullTestOK(){
-    String testString = ConsistencyUtils.checkNotNull("Hello World", "This instance cannot be null");
+  @Test public void utilsNotNullTestOK() {
+    String testString =
+        ConsistencyUtils.checkNotNull("Hello World", "This instance cannot be null");
     assertEquals(testString, "Hello World");
   }
 
-  @Test public void utilsNotNullNoMessageTestOK(){
+  @Test public void utilsNotNullNoMessageTestOK() {
     String testString = ConsistencyUtils.checkNotNull("Hello World");
     assertEquals(testString, "Hello World");
   }
 
-  @Test
-  public void utilsEmptyStringTestNull(){
+  @Test public void utilsEmptyStringTestNull() {
     thrown.expect(Exception.class);
     thrown.expectMessage("This String cannot be null");
 
     ConsistencyUtils.checkEmptyString(null, "This String cannot be null");
   }
 
-  @Test
-  public void utilsEmptyStringTestEmpty(){
+  @Test public void utilsEmptyStringTestEmpty() {
     thrown.expect(Exception.class);
     thrown.expectMessage("This String cannot be empty");
 
     ConsistencyUtils.checkEmptyString("", "This String cannot be empty");
   }
 
-  @Test
-  public void utilsEmptyStringTestNullNoMessage(){
+  @Test public void utilsEmptyStringTestNullNoMessage() {
     thrown.expect(NullPointerException.class);
 
     ConsistencyUtils.checkEmptyString(null);
   }
 
-  @Test public void utilsEmptyStringTestOK(){
+  @Test public void utilsEmptyStringTestOK() {
     String testString = ConsistencyUtils.checkEmptyString("Hello World");
     assertEquals(testString, "Hello World");
   }
 
-  @Test
-  public void testCheckInstanceIncorrect() throws Exception {
+  @Test public void testCheckInstanceIncorrect() throws Exception {
     assertEquals(new Integer(10), ConsistencyUtils.checkInstance(new Integer(10), Integer.class));
   }
 
-  @Test
-  public void testCheckNullInstance() throws Exception {
+  @Test public void testCheckNullInstance() throws Exception {
     Integer integer = new Integer(10);
 
     thrown.expect(ClassCastException.class);
-    thrown.expectMessage(integer.getClass() + " incompatible type with "+ Float.class.getName());
+    thrown.expectMessage(integer.getClass() + " incompatible type with " + Float.class.getName());
 
     ConsistencyUtils.checkInstance(integer, Float.class);
   }
 
-  @Test
-  public void shouldReturnSameObjectWhenCollectionHasItems() throws Exception {
+  @Test public void shouldReturnSameObjectWhenCollectionHasItems() throws Exception {
     List<String> list = new ArrayList<>();
     list.add("0");
 
@@ -106,8 +97,7 @@ public class ConsistencyUtilsTest {
     assertSame(list, returnedList);
   }
 
-  @Test
-  public void shouldThrowNullPointerExceptionWhenCollectionIsNull() throws Exception {
+  @Test public void shouldThrowNullPointerExceptionWhenCollectionIsNull() throws Exception {
     thrown.expect(NullPointerException.class);
     thrown.expectMessage("The object is null");
 
@@ -116,8 +106,7 @@ public class ConsistencyUtilsTest {
     ConsistencyUtils.checkNotEmpty(list);
   }
 
-  @Test
-  public void shouldThrowIllegalArgumentExceptionWhenCollectionIsEmpty() throws Exception {
+  @Test public void shouldThrowIllegalArgumentExceptionWhenCollectionIsEmpty() throws Exception {
     thrown.expect(IllegalArgumentException.class);
     thrown.expectMessage("Container cannot be null or empty");
 
@@ -126,8 +115,7 @@ public class ConsistencyUtilsTest {
     ConsistencyUtils.checkNotEmpty(list);
   }
 
-  @Test
-  public void shouldReturnSameObjectWhenCollectionNotHasNullItems() throws Exception {
+  @Test public void shouldReturnSameObjectWhenCollectionNotHasNullItems() throws Exception {
     List<String> list = new ArrayList<>();
     list.add("0");
 
@@ -136,8 +124,7 @@ public class ConsistencyUtilsTest {
     assertSame(list, returnedList);
   }
 
-  @Test
-  public void shouldThrowNullPointerExceptionWhenListIsNull() throws Exception {
+  @Test public void shouldThrowNullPointerExceptionWhenListIsNull() throws Exception {
     thrown.expect(NullPointerException.class);
     thrown.expectMessage("The object is null");
 
@@ -146,8 +133,7 @@ public class ConsistencyUtilsTest {
     ConsistencyUtils.containsNoNulls(list);
   }
 
-  @Test
-  public void shouldThrowNullPointerExceptionWhenCollectionHasNullItems() throws Exception {
+  @Test public void shouldThrowNullPointerExceptionWhenCollectionHasNullItems() throws Exception {
     thrown.expect(NullPointerException.class);
     thrown.expectMessage("Container cannot contain null values");
 
@@ -155,6 +141,5 @@ public class ConsistencyUtilsTest {
     list.add(null);
 
     ConsistencyUtils.containsNoNulls(list);
-
   }
 }

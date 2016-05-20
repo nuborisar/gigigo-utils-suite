@@ -18,7 +18,6 @@
 
 package com.gigigo.gggjavalib.business.model;
 
-
 public class BusinessError<ExtraErrorInfo> {
 
   public static final int EXCEPTION_BUSINESS_ERROR_CODE = -222;
@@ -44,13 +43,16 @@ public class BusinessError<ExtraErrorInfo> {
     this.businessContentType = businessContentType;
   }
 
-  public static BusinessError createOKInstance(){
-    BusinessError businessError = new BusinessError(NO_ERROR_BUSINESS_ERROR_CODE, NO_ERROR_BUSINESS_ERROR_MESSAGE, BusinessContentType.NO_ERROR_CONTENT);
+  public static BusinessError createOKInstance() {
+    BusinessError businessError =
+        new BusinessError(NO_ERROR_BUSINESS_ERROR_CODE, NO_ERROR_BUSINESS_ERROR_MESSAGE,
+            BusinessContentType.NO_ERROR_CONTENT);
     return businessError;
   }
 
   public static BusinessError createKoInstance(String message) {
-    BusinessError businessError = new BusinessError(EXCEPTION_BUSINESS_ERROR_CODE, message, BusinessContentType.EXCEPTION_CONTENT);
+    BusinessError businessError = new BusinessError(EXCEPTION_BUSINESS_ERROR_CODE, message,
+        BusinessContentType.EXCEPTION_CONTENT);
     return businessError;
   }
 

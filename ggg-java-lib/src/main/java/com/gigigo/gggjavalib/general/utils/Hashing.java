@@ -22,8 +22,9 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+final public class Hashing {
 
-public class Hashing {
+  private Hashing() { }
 
   public static String generateMd5(String string)
       throws UnsupportedEncodingException, NoSuchAlgorithmException {
@@ -35,10 +36,9 @@ public class Hashing {
     StringBuffer sb = new StringBuffer();
 
     for (int i = 0; i < thedigest.length; ++i) {
-      sb.append(Integer.toHexString((thedigest[i] & 0xFF) | 0x100).substring(1,3));
+      sb.append(Integer.toHexString((thedigest[i] & 0xFF) | 0x100).substring(1, 3));
     }
 
     return sb.toString();
   }
-
 }

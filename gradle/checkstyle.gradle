@@ -1,5 +1,5 @@
 /*
- * Created by Gigigo Android Team
+ * Created by Orchextra
  *
  * Copyright (C) 2016 Gigigo Mobile Services SL
  *
@@ -16,21 +16,9 @@
  * limitations under the License.
  */
 
-package com.gigigo.gggjavalib.general.utils;
+apply plugin: 'checkstyle'
 
-final public class StringUtils {
-
-  private StringUtils() { }
-
-  public static String capitalize(String s) {
-    if (s == null || s.length() == 0) {
-      return "";
-    }
-    char first = s.charAt(0);
-    if (Character.isUpperCase(first)) {
-      return s;
-    } else {
-      return Character.toUpperCase(first) + s.substring(1);
-    }
-  }
+checkstyle {
+  configFile rootProject.file('checkstyle.xml')
+  showViolations true
 }

@@ -18,7 +18,6 @@
 
 package com.gigigo.gggjavalib.business.model;
 
-
 public enum BusinessContentType {
   NO_ERROR_CONTENT,
   EXCEPTION_CONTENT,

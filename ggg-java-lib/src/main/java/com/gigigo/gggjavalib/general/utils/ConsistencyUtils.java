@@ -20,38 +20,39 @@ package com.gigigo.gggjavalib.general.utils;
 
 import java.util.Collection;
 
+final public class ConsistencyUtils {
 
-public class ConsistencyUtils {
+  private ConsistencyUtils() { }
 
   public static <T> T checkNotNull(T object) {
     return checkNotNull(object, "The object is null");
   }
 
-    public static <T> T checkNotNull(T object, String message) {
-      if (object == null) {
-        throw new NullPointerException(message);
-      }
-      return object;
+  public static <T> T checkNotNull(T object, String message) {
+    if (object == null) {
+      throw new NullPointerException(message);
     }
-
-  public static String checkEmptyString(String object, String message){
-    object = checkNotNull(object, message);
-      if (object.trim() == ""){
-        throw new NullPointerException(message);
-      }
     return object;
   }
 
-  public static String checkEmptyString(String object){
+  public static String checkEmptyString(String object, String message) {
+    object = checkNotNull(object, message);
+    if (object.trim() == "") {
+      throw new NullPointerException(message);
+    }
+    return object;
+  }
+
+  public static String checkEmptyString(String object) {
     return checkEmptyString(object, "The string is null");
   }
 
   public static <T> T checkInstance(Object obj, Class<T> type) {
-    if ( type.isInstance(obj) ) {
+    if (type.isInstance(obj)) {
       T t = type.cast(obj);
       return t;
-    }else{
-      throw new ClassCastException(obj.getClass() + " incompatible type with "+ type.getName());
+    } else {
+      throw new ClassCastException(obj.getClass() + " incompatible type with " + type.getName());
     }
   }
 
@@ -71,5 +72,4 @@ public class ConsistencyUtils {
     }
     return container;
   }
-
 }
