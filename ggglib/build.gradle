@@ -17,15 +17,7 @@
  */
 
 apply plugin: 'com.android.library'
-
-def getWorkingBranch() {
-  // Triple double-quotes for the breaklines
-  def workingBranch = """git --git-dir=${rootDir}/.git
-                               --work-tree=${rootDir}
-                               rev-parse --abbrev-ref HEAD""".execute().text.trim()
-  print "Working branch: " + workingBranch
-  return workingBranch
-}
+apply plugin: 'com.github.dcendents.android-maven'
 
 android {
 
@@ -54,9 +46,9 @@ android {
     }
   }
 
-  lintOptions {
-    abortOnError false
-  }
+    lintOptions {
+      abortOnError false
+    }
 
   testOptions {
     unitTests.returnDefaultValues = true
@@ -65,45 +57,28 @@ android {
 
 dependencies {
 
-  compile project(':ggg-java-lib')
-  compile project(':ggglogger')
+  compile (parent.ext.dependencies.dexter){
+      exclude group:'com.android.support', module:'recyclerview-v7'
+      exclude group:'com.android.support', module:'support-annotations'
+  }
+
+  compile parent.ext.dependencies.retrofit
+  compile parent.ext.dependencies.gsonConverter
+
+  compile parent.ext.dependencies.playServicesGcm
+
+  compile project (':ggg-java-lib')
+  compile project (':ggglogger')
 
   testCompile parent.ext.testDependencies.junit
   testCompile parent.ext.testDependencies.mockito
+  testCompile parent.ext.dependencies.gsonConverter
   testCompile parent.ext.testDependencies.mockWebServer
-
-  if (getWorkingBranch().contains('modular')) {
-
-    compile 'com.squareup.retrofit2:retrofit:2.0.2'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-    compile 'com.google.android.gms:play-services-gcm:8.4.0'
-
-    compile('com.karumi:dexter:2.2.2') {
-      exclude group: 'com.android.support', module: 'recyclerview-v7'
-      exclude group: 'com.android.support', module: 'support-annotations'
-    }
-
-    testCompile 'com.squareup.retrofit2:converter-gson:2.0.2'
-  } else {
-    compile parent.ext.dependencies.retrofit
-    compile parent.ext.dependencies.gsonConverter
-    compile parent.ext.dependencies.playServicesGcm
-
-    compile(parent.ext.dependencies.dexter) {
-      exclude group: 'com.android.support', module: 'recyclerview-v7'
-      exclude group: 'com.android.support', module: 'support-annotations'
-    }
-
-    testCompile parent.ext.dependencies.gsonConverter
-  }
 }
-
 
 //apply plugin: 'com.google.gms.google-services'
 
 // build a jar with source files
-apply plugin: 'com.github.dcendents.android-maven'
-
 task sourcesJar(type: Jar) {
   from android.sourceSets.main.java.srcDirs
   classifier = 'sources'
@@ -115,9 +90,9 @@ task javadoc(type: Javadoc) {
 }
 
 afterEvaluate {
-  javadoc.classpath +=
-      files(android.libraryVariants.collect { variant -> variant.javaCompile.classpath.files
-      })
+  javadoc.classpath += files(android.libraryVariants.collect { variant ->
+    variant.javaCompile.classpath.files
+  })
 }
 
 // build a jar with javadoc
@@ -130,11 +105,3 @@ artifacts {
   archives sourcesJar
   archives javadocJar
 }
-
-if (getWorkingBranch().contains('modular')) {
-
-  checkstyle {
-    configFile = rootProject.file('checkstyle.xml')
-  }
-}
-

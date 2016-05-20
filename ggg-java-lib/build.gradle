@@ -17,6 +17,7 @@
  */
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
@@ -32,17 +33,6 @@ test {
   }
 }
 
-def getWorkingBranch() {
-  // Triple double-quotes for the breaklines
-  def workingBranch = """git --git-dir=${rootDir}/.git
-                               --work-tree=${rootDir}
-                               rev-parse --abbrev-ref HEAD""".execute().text.trim()
-  print "Working branch: " + workingBranch
-  return workingBranch
-}
-
-apply plugin: 'maven'
-
 task sourcesJar(type: Jar, dependsOn: classes) {
   classifier = 'sources'
   from sourceSets.main.allSource
@@ -56,11 +46,4 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
   archives sourcesJar
   archives javadocJar
-}
-
-if (getWorkingBranch().contains('modular')) {
-
-  checkstyle {
-    configFile = rootProject.file('checkstyle.xml')
-  }
 }

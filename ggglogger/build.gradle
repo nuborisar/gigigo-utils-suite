@@ -17,15 +17,8 @@
  */
 
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
-def getWorkingBranch() {
-  // Triple double-quotes for the breaklines
-  def workingBranch = """git --git-dir=${rootDir}/.git
-                               --work-tree=${rootDir}
-                               rev-parse --abbrev-ref HEAD""".execute().text.trim()
-  print "Working branch: " + workingBranch
-  return workingBranch
-}
 
 android {
   compileSdkVersion parent.ext.androidCompileSdkVersion
@@ -53,17 +46,11 @@ android {
   }
 }
 
-dependencies {
 
-  if (getWorkingBranch().contains('modular')) {
-    compile 'com.android.support:support-annotations:23.1.1'
-  } else {
-    compile parent.ext.dependencies.supportAnnotations
-  }
-
+dependencies{
+  compile parent.ext.dependencies.supportAnnotations
   testCompile parent.ext.testDependencies.junit
 }
-apply plugin: 'com.github.dcendents.android-maven'
 
 // build a jar with source files
 task sourcesJar(type: Jar) {
@@ -72,7 +59,7 @@ task sourcesJar(type: Jar) {
 }
 
 task javadoc(type: Javadoc) {
-  failOnError false
+  failOnError  false
   source = android.sourceSets.main.java.sourceFiles
   classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
   classpath += configurations.compile
@@ -87,11 +74,4 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
   archives sourcesJar
   archives javadocJar
-}
-
-if (getWorkingBranch().contains('modular')) {
-
-  checkstyle {
-    configFile = rootProject.file('checkstyle.xml')
-  }
 }
