@@ -30,11 +30,11 @@ public class GGGLogImpl{
   }
 
   public static void log(String text, boolean showTrace) {
-    logImpl(text,showTrace, 1);
+    logImpl(text, showTrace, 1);
   }
 
   public static void log(String text, LogLevel logLevel) {
-    logImpl(text,logLevel, true, 1);
+    logImpl(text, logLevel, true, 1);
   }
 
   public static void log(String text, LogLevel logLevel, boolean showTrace) {
@@ -43,6 +43,10 @@ public class GGGLogImpl{
 
   public static void log(String text, LogLevel logLevel, String tag) {
     logImpl(text,logLevel, tag, false, 1);
+  }
+
+  public static void log(String text, LogLevel logLevel, String tag, int traceExtraLevels) {
+    logImpl(text,logLevel, tag, true, traceExtraLevels + 1);
   }
 
   public static void log(String text, LogLevel logLevel, String tag, boolean showTrace) {
@@ -74,7 +78,7 @@ public class GGGLogImpl{
     String processedText = logProcessor.processTextToShow(text, stackLevels + 1);
     String processedTag = logProcessor.processTagToShow(tag);
 
-    AndroidLogger.deliverToAndroidLog("Orchextra:: " + processedText, logLevel, processedTag);
+    AndroidLogger.deliverToAndroidLog(processedText, logLevel, processedTag);
   }
 
 
