@@ -65,8 +65,6 @@ dependencies {
   compile parent.ext.dependencies.retrofit
   compile parent.ext.dependencies.gsonConverter
 
-  compile parent.ext.dependencies.playServicesGcm
-
   compile project (':ggg-java-lib')
   compile project (':ggglogger')
 
