@@ -18,8 +18,6 @@
 
 package com.gigigo.ggglib.network.executors;
 
-import android.support.annotation.NonNull;
-
 import com.gigigo.ggglib.network.converters.ErrorConverter;
 import com.gigigo.ggglib.network.defaultelements.RetryOnErrorPolicy;
 import com.gigigo.ggglib.network.responses.ApiGenericExceptionResponse;
@@ -37,8 +35,7 @@ public class RetrofitApiServiceExcecutor implements ApiServiceExecutor<Call<?>> 
   private RetryOnErrorPolicy retryOnErrorPolicy;
   private ErrorConverter errorConverter;
 
-  public RetrofitApiServiceExcecutor(@NonNull RetryOnErrorPolicy retryOnErrorPolicy,
-      @NonNull ErrorConverter errorConverter) {
+  public RetrofitApiServiceExcecutor(RetryOnErrorPolicy retryOnErrorPolicy, ErrorConverter errorConverter) {
     this.retryOnErrorPolicy = retryOnErrorPolicy;
     this.errorConverter = errorConverter;
   }

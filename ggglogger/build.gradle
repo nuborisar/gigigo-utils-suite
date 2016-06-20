@@ -48,7 +48,6 @@ android {
 
 
 dependencies{
-  compile parent.ext.dependencies.supportAnnotations
   testCompile parent.ext.testDependencies.junit
 }
 
