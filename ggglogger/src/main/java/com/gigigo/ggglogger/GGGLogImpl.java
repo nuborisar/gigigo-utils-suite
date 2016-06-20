@@ -18,9 +18,6 @@
 
 package com.gigigo.ggglogger;
 
-import android.support.annotation.Nullable;
-
-
 public class GGGLogImpl{
 
   private static final LogLevel DEFAULT_LOGLEVEL = LogLevel.DEBUG;
@@ -65,12 +62,12 @@ public class GGGLogImpl{
     logImpl(text, logLevel, null, showTrace, stackLevels+1);
   }
 
-  private static void logImpl(String text, LogLevel logLevel, @Nullable String tag,
+  private static void logImpl(String text, LogLevel logLevel, String tag,
       int stackLevels) {
     logImpl(text, logLevel, tag, false, stackLevels+1);
   }
 
-  private static void logImpl(String text, LogLevel logLevel, @Nullable String tag,
+  private static void logImpl(String text, LogLevel logLevel, String tag,
       boolean showTrace, int stackLevels) {
 
     LogProcessor logProcessor = new LogProcessor(showTrace);
