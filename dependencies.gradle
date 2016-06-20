@@ -22,9 +22,7 @@ allprojects {
                     retrofit                   : 'com.squareup.retrofit2:retrofit:2.0.2',
                     gsonConverter              : 'com.squareup.retrofit2:converter-gson:2.0.2',
 
-                    dexter                     : 'com.karumi:dexter:2.2.2',
-                    supportAnnotations         : 'com.android.support:support-annotations:23.1.1',
-                    playServicesGcm            : 'com.google.android.gms:play-services-gcm:8.4.0'
+                    dexter                     : 'com.karumi:dexter:2.2.2'
     ]
 
     testDependencies = [mockito      : 'org.mockito:mockito-core:2.0.31-beta',

@@ -23,7 +23,6 @@ import android.content.Context;
 import android.net.wifi.WifiManager;
 
 import com.gigigo.ggglib.device.providers.AndrodSerialNumberProvider;
-import com.gigigo.ggglib.device.providers.AndroidInstanceIdProvider;
 import com.gigigo.ggglib.device.providers.AndroidSecureIdProvider;
 import com.gigigo.ggglib.device.providers.BluetoothMacProvider;
 import com.gigigo.ggglib.device.providers.HandsetProvider;
@@ -34,11 +33,6 @@ public class DeviceInfoProvider {
     public static String getHandset() {
         HandsetProvider handset = new HandsetProvider();
         return handset.provideHandset();
-    }
-
-    public static String getAndroidInstanceId(Context context) {
-        AndroidInstanceIdProvider instanceIdProvider = new AndroidInstanceIdProvider();
-        return instanceIdProvider.provideAndroidInstanceId(context);
     }
 
     public static String getAndroidSecureId(Context context) {
