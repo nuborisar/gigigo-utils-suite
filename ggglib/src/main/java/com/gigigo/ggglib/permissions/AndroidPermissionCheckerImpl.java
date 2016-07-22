@@ -21,7 +21,7 @@ package com.gigigo.ggglib.permissions;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.support.v4.content.ContextCompat;
+import android.support.v4ox.content.ContextCompat;
 import android.view.ViewGroup;
 import com.gigigo.ggglib.ContextProvider;
 import com.karumi.dexter.Dexter;
