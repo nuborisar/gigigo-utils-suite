@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 android {
@@ -93,12 +93,12 @@ task javadoc(type: Javadoc) {
   source = android.sourceSets.main.java.srcDirs
   classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
-//
-//afterEvaluate {
-//  javadoc.classpath += files(android.libraryVariants.collect { variant ->
-//    variant.javaCompile.classpath.files
-//  })
-//}
+
+afterEvaluate {
+  javadoc.classpath += files(android.libraryVariants.collect { variant ->
+    variant.javaCompile.classpath.files
+  })
+}
 
 // build a jar with javadoc
 task javadocJar(type: Jar, dependsOn: javadoc) {
