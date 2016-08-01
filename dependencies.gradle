@@ -20,8 +20,9 @@ allprojects {
   ext {
     dependencies = [
                     retrofit                   : 'com.squareup.retrofit2:retrofit:2.0.2',
-                    gsonConverter              : 'com.squareup.retrofit2:converter-gson:2.0.2',
-                    dexter                     : 'com.karumi:dexter:2.2.2'
+                    gsonConverter              : 'com.squareup.retrofit2:converter-gson:2.0.2'
+                    //,
+                   // dexter                     : 'com.karumi:dexter:2.2.2'
 
     ]
 

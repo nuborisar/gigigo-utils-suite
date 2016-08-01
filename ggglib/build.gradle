@@ -57,7 +57,7 @@ android {
 
 dependencies {
 
-  compile 'com.github.nuborisar:Dexter:3.1'
+  compile 'com.github.nuborisar:Dexter:3.2'
 /*
   compile (parent.ext.dependencies.dexter){
       exclude group:'com.android.support', module:'recyclerview-v7'
