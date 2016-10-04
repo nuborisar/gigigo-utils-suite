@@ -24,10 +24,10 @@ import android.content.pm.PackageManager;
 import android.support.v4ox.content.ContextCompat;
 import android.view.ViewGroup;
 import com.gigigo.ggglib.ContextProvider;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.listener.single.CompositePermissionListener;
-import com.karumi.dexter.listener.single.PermissionListener;
-import com.karumi.dexter.listener.single.SnackbarOnDeniedPermissionListener;
+import com.karumi.dexterox.Dexter;
+import com.karumi.dexterox.listener.single.CompositePermissionListener;
+import com.karumi.dexterox.listener.single.PermissionListener;
+import com.karumi.dexterox.listener.single.SnackbarOnDeniedPermissionListener;
 
 
 public class AndroidPermissionCheckerImpl implements PermissionChecker {

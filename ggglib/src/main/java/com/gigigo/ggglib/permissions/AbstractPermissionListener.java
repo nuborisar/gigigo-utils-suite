@@ -20,11 +20,11 @@ package com.gigigo.ggglib.permissions;
 
 import android.content.Context;
 import com.gigigo.ggglib.ContextProvider;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
+import com.karumi.dexterox.PermissionToken;
+import com.karumi.dexterox.listener.PermissionDeniedResponse;
+import com.karumi.dexterox.listener.PermissionGrantedResponse;
+import com.karumi.dexterox.listener.PermissionRequest;
+import com.karumi.dexterox.listener.single.PermissionListener;
 
 
 public abstract class AbstractPermissionListener implements PermissionListener {
